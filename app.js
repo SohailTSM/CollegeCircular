@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const registerRoutes = require('./routes/registerRoutes');
 require('dotenv/config');
 const app = express();
 
@@ -18,8 +19,10 @@ app.set('view engine', 'ejs');
 
 // Middlewares
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 //Route Middlewares
+app.use('/register', registerRoutes);
 
 //Routes
 app.get('/', (req, res) => {
@@ -27,5 +30,3 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {});
-
-app.get('/register', (req, res) => {});

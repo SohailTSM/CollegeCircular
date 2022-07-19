@@ -1,6 +1,43 @@
 <%- include('./partials/head.ejs') %>
 
 <body>
-  
+  <div>
+    <form action="/register" method="post">
+      <label for="name">Name</label>
+      <input type="text" name="name">
+      <br>
+      <label for="rollNumber">Roll Number</label>
+      <input type="text" name="rollNumber">
+      <br>
+      <label for="branch">Branch</label>
+      <select name="branch">
+        <option value="IT">IT</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="ME">ME</option>
+        <option value="CE">CE</option>
+      </select>
+      <br>
+      <label for="semester">Semester</label>
+      <select name="semester">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <br>
+      <label for="username">Username</label>
+      <input type="text" name="username">
+      <br>
+      <label for="password">Password</label>
+      <input type="password" name="password">
+      <br>
+      <button type="submit">Register</button>
+    </form>
+  </div>
   <%- include('./partials/footer.ejs') %>
 </body>
