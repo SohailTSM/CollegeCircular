@@ -1,0 +1,27 @@
+{
+  "name": "collegecircular",
+  "version": "1.0.0",
+  "description": "A web site to access college circular using node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "dev": "nodemon ./app.jsl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SohailTSM/CollegeCircular.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SohailTSM/CollegeCircular/issues"
+  },
+  "homepage": "https://github.com/SohailTSM/CollegeCircular#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.5"
+  }
+}
