@@ -39,5 +39,11 @@
       <button type="submit">Register</button>
     </form>
   </div>
+  <script type="text/javascript">
+    var error = '<%= error %>';
+    if ( error ) {
+      alert( ( error ) )
+    }
+  </script>
   <%- include('./partials/footer.ejs') %>
 </body>

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const registerRoutes = require('./routes/registerRoutes');
+const loginRoutes = require('./routes/loginRoutes');
 require('dotenv/config');
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Route Middlewares
 app.use('/register', registerRoutes);
+app.use('/login', loginRoutes);
 
 //Routes
 app.get('/', (req, res) => {
