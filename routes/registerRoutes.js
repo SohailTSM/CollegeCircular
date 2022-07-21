@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User').userModel;
 
 router.get('/', (req, res) => {
-  res.render('register', { title: 'Register User', error: null });
+  res.render('register', { title: 'Register User', message: null });
 });
 
 router.post('/', async (req, res) => {
@@ -13,12 +13,17 @@ router.post('/', async (req, res) => {
   user.password = hashedPassword;
   user
     .save()
-    .then((result) => res.redirect('/'))
+    .then((result) =>
+      res.render('login', {
+        title: 'Login',
+        message: 'User created successfully',
+      })
+    )
     .catch((err) => {
       console.log(err.errors.name);
       res.render('register', {
         title: 'Register',
-        error: 'Enter complete details.',
+        message: 'Enter complete details.',
       });
     });
 });

@@ -2,7 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const registerRoutes = require('./routes/registerRoutes');
 const loginRoutes = require('./routes/loginRoutes');
+const circularsRoutes = require('./routes/circularsRoutes');
+const cookieParser = require('cookie-parser');
+
 require('dotenv/config');
+
 const app = express();
 
 // DB Connection
@@ -20,15 +24,15 @@ app.set('view engine', 'ejs');
 
 // Middlewares
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //Route Middlewares
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
+app.use('/circulars', circularsRoutes);
 
 //Routes
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
+  res.redirect('/circulars');
 });
-
-app.get('/login', (req, res) => {});
