@@ -4,6 +4,7 @@ const registerRoutes = require('./routes/registerRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const circularsRoutes = require('./routes/circularsRoutes');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 require('dotenv/config');
 
@@ -20,10 +21,11 @@ mongoose
   .catch((err) => console.log(err));
 
 // Settings
+app.set('view engine', 'html');
 
 // Middlewares
 app.use(express.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,5 +36,5 @@ app.use('/api/circulars', circularsRoutes);
 
 //Routes
 app.get('/', (req, res) => {
-  res.render('index');
+  res.sendFile(path.join(__dirname + '/views/index.html'));
 });

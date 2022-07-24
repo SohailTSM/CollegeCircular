@@ -11,21 +11,24 @@ router.post('/', async (req, res) => {
   // We assume that field validations will be done in frontend itself
 
   // Check if username already exists
-  User.findOne({ username: req.body.username }).then((res) =>
+  const savedUser = await User.findOne({ username: req.body.username });
+
+  if (!savedUser) {
+    bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
+      let user = new User(req.body);
+      user.password = hashedPassword;
+      user
+        .save()
+        .then((result) => res.json({ message: 'User Created', result }))
+        .catch((err) => {
+          res.json(err);
+        });
+    });
+  } else {
     res.json({
       message: 'Username already exists please use different Username',
-    })
-  );
-
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  let user = new User(req.body);
-  user.password = hashedPassword;
-  user
-    .save()
-    .then((result) => res.json({ message: 'User Created', result }))
-    .catch((err) => {
-      res.json(err);
     });
+  }
 });
 
 module.exports = router;
