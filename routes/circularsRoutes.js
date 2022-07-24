@@ -4,7 +4,9 @@ const User = require('../models/User').userModel;
 const authorization = require('../auth/auth');
 
 router.get('/', authorization, (req, res) => {
-  res.json({ message: 'Circulars Page' });
+  if (req.username === 'admin') {
+  } else {
+  }
 });
 
 module.exports = router;
