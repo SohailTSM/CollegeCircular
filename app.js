@@ -20,19 +20,19 @@ mongoose
   .catch((err) => console.log(err));
 
 // Settings
-app.set('view engine', 'ejs');
 
 // Middlewares
+app.use(express.json());
 app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //Route Middlewares
-app.use('/register', registerRoutes);
-app.use('/login', loginRoutes);
-app.use('/circulars', circularsRoutes);
+app.use('/api/register', registerRoutes);
+app.use('/api/login', loginRoutes);
+app.use('/api/circulars', circularsRoutes);
 
 //Routes
 app.get('/', (req, res) => {
-  res.redirect('/circulars');
+  res.render('index');
 });
