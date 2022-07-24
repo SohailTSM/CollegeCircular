@@ -1,10 +1,8 @@
 const authorization = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) {
-    return res.render('login', {
-      title: 'Login',
-      message: 'Invalid user please login.',
-    });
+    console.log(token, 'Auth token not available');
+    return res.redirect('/login');
   }
   try {
     const data = jwt.verify(token, 'YOUR_SECRET_KEY');
@@ -12,10 +10,8 @@ const authorization = (req, res, next) => {
     req.username = data.username;
     return next();
   } catch {
-    return res.render('login', {
-      title: 'Login',
-      message: 'Invalid user please login.',
-    });
+    console.log('mismatch');
+    return res.redirect('/login');
   }
 };
 

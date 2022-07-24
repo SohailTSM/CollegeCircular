@@ -16,7 +16,7 @@
     </a>
   </div>
   <script type="text/javascript">
-    var message = '<%= message %>';
+    var message = '<%= message || null%>';
     if ( message ) {
       alert( ( message ) )
     }

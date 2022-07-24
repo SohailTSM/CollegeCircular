@@ -13,12 +13,7 @@ router.post('/', async (req, res) => {
   user.password = hashedPassword;
   user
     .save()
-    .then((result) =>
-      res.render('login', {
-        title: 'Login',
-        message: 'User created successfully',
-      })
-    )
+    .then((result) => res.redirect('/login'))
     .catch((err) => {
       console.log(err.errors.name);
       res.render('register', {

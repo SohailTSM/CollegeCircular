@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res, next) => {
-  const savedUser = await User.findOne({ username: req.body.username }).then();
+  const savedUser = await User.findOne({ username: req.body.username });
   if (savedUser) {
     bcrypt.compare(req.body.password, savedUser.password).then((result) => {
       const token = jwt.sign(
@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
           if (result) {
             res
               .cookie('accessToken', token, { httpOnly: true })
-              .render('index', { title: 'Circulars' });
+              .redirect('/circulars');
           } else {
             res.render('login', {
               title: 'Login',
