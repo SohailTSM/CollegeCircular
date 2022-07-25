@@ -16,11 +16,11 @@ const circularSchema = new Schema(
       required: true,
     },
     semester: {
-      typee: String,
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Circular', circularSchema);
+module.exports.circularModel = mongoose.model('Circular', circularSchema);

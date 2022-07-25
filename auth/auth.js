@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 const authorization = (req, res, next) => {
   const token = req.cookies.accessToken;
-  console.log(token);
   if (!token) {
     return res.json({ message: 'Auth token not available' });
   }
