@@ -12,11 +12,13 @@ const circularSchema = new Schema(
       required: true,
     },
     branch: {
-      type: String,
+      type: Array,
+      of: String,
       required: true,
     },
     semester: {
-      type: String,
+      type: Array,
+      of: String,
       required: true,
     },
   },
